@@ -3,14 +3,12 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import todoReducer from './todo';
 import ipReducer from './ipInfo';
+import userReducer from './user';
 
 export default configureStore({
     reducer: {
         todo: todoReducer,
-        ipInfo: ipReducer
-    },
-    // middleware: getDefaultMiddleware =>
-    //     getDefaultMiddleware({
-    //         thunk: true
-    //     })
+        ipInfo: ipReducer,
+        user: userReducer
+    }
 })

@@ -1,5 +1,6 @@
 import { removeItem } from '../../reducer/todo';
 import { connect } from 'react-redux'
+import { List, Checkbox, Typography } from 'antd';
 
 const TodoItem = ({ title, listName, id, removeItem, isCompleted, isImportant }) => {
     //const dispatch = useDispatch()
@@ -22,10 +23,16 @@ const TodoItem = ({ title, listName, id, removeItem, isCompleted, isImportant })
             })
 
     }
+
+    const onChange = () => {
+
+    }
     return (
-        <div className="todo-item">
-            <h4>{title} <a onClick={remove}>Remove List</a></h4>
-        </div>
+        <List.Item
+            actions={[<a onClick={remove}>remove</a>]}
+        >
+            <Typography.Title level={4}><Checkbox onChange={onChange} /> {title}</Typography.Title>
+        </List.Item>
     )
 }
 

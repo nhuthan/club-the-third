@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { addList } from '../../reducer/todo';
+import { Input } from 'antd';
 
 const CreateList = props => {
     const [name, setName] = useState('');
     const dispatch = useDispatch()
 
     return (
-        <input type="text"
+        <Input type="text"
             value={name}
             onKeyDown={e => {
                 if (e.key == 'Enter') {
