@@ -35,16 +35,30 @@ namespace the_third.Controllers
         public async Task<IActionResult> GetInfo()
         {
             var userName = User.Identity.Name;
-            var user = await userManager.FindByNameAsync(userName);
-            return Ok(new
+            //var user = await userManager.FindByNameAsync(userName);
+
+            var user2 = await db.Users.Select(u => new
             {
-                User = new
-                {
-                    user.UserName,
-                    user.Email,
-                    user.PhoneNumber
-                }
-            });
+                u.FullName,
+                u.Description,
+                u.Avatar,
+                u.UserName,
+                u.Email,
+                u.PhoneNumber
+            }).Where(u => u.UserName == userName)
+            .FirstOrDefaultAsync();
+
+            // return Ok(new
+            // {
+            //     User = new
+            //     {
+            //         user.UserName,
+            //         user.Email,
+            //         user.PhoneNumber
+            //     }
+            // });
+
+            return Ok(user2);
         }
 
         [HttpPost("login")]

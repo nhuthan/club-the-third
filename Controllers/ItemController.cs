@@ -15,7 +15,7 @@ namespace the_third.Controllers
             this.db = dbContext;
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}")] //api/items/5
         public async Task<IActionResult> RemoveItem(int id)
         {
             var found = await db.Items.FindAsync(id);
